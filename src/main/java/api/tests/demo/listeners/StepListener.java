@@ -1,18 +1,17 @@
 package api.tests.demo.listeners;
 
-import java.io.File;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.Objects;
-import java.util.UUID;
-
-import org.slf4j.MDC;
-
 import api.tests.demo.constants.ProjectConstants;
 import api.tests.demo.utils.AllureHelper;
 import io.qameta.allure.listener.StepLifecycleListener;
 import io.qameta.allure.model.Status;
 import io.qameta.allure.model.StepResult;
+import org.slf4j.MDC;
+
+import java.io.File;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.Objects;
+import java.util.UUID;
 
 public class StepListener implements StepLifecycleListener {
 

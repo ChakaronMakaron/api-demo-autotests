@@ -53,13 +53,11 @@ public class CocktailRecipesValidations {
     }
 
     public static Consumer<Response> resultMustHaveSize(int expected) {
-        return response -> {
-            assertEquals(
-                response.jsonPath().getInt("drinks.size()"),
-                expected,
-                "Unexpected items size"
-            );
-        };
+        return response -> assertEquals(
+            response.jsonPath().getInt("drinks.size()"),
+            expected,
+            "Unexpected items size"
+        );
     }
 
     public static Consumer<Response> resultItemMatchesJsonSchema(String schema) {
@@ -77,24 +75,17 @@ public class CocktailRecipesValidations {
 
     private static JsonNode findRecipeWithName(Response response, String name) {
         JsonNode responseJsonNode = response.as(JsonNode.class);
-            Iterator<JsonNode> iterator = responseJsonNode.at("/drinks")
+        Iterator<JsonNode> iterator = responseJsonNode.at("/drinks")
                 .iterator();
 
-            Optional<JsonNode> item = Optional.empty();
-
-            JsonNode current;
-            while (iterator.hasNext()) {
-                current = iterator.next();
-                if (current.at("/strDrink").asText().equalsIgnoreCase(name)) {
-                    item = Optional.of(current);
-                    break;
-                }
+        JsonNode current;
+        while (iterator.hasNext()) {
+            current = iterator.next();
+            if (current.at("/strDrink").asText().equalsIgnoreCase(name)) {
+                return current;
             }
+        }
 
-            if (item.isEmpty()) {
-                fail("No recipe with 'strDrink' == '%s'".formatted(name));
-            }
-
-            return item.get();
+        throw new AssertionError("No recipe with 'strDrink' == '%s'".formatted(name));
     }
 }

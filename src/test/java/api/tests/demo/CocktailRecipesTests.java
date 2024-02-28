@@ -1,25 +1,21 @@
 package api.tests.demo;
 
-import static api.tests.demo.validations.CocktailRecipesValidations.ingredientsMustContain;
-import static api.tests.demo.validations.CocktailRecipesValidations.resultItemMatchesJsonSchema;
-import static api.tests.demo.validations.CocktailRecipesValidations.resultMustHaveSize;
-import static api.tests.demo.validations.CocktailRecipesValidations.resultSizeMustBeAtLeast;
-import static api.tests.demo.validations.CommonValidations.combine;
-import static api.tests.demo.validations.CommonValidations.ok;
-
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
-
-import org.testng.annotations.Test;
-
 import api.tests.demo.config.ConfigContainer;
 import api.tests.demo.constants.Endpoints;
 import api.tests.demo.constants.Groups;
 import api.tests.demo.requests.ServiceRequest;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
+import org.testng.annotations.Test;
+
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
+
+import static api.tests.demo.validations.CocktailRecipesValidations.*;
+import static api.tests.demo.validations.CommonValidations.combine;
+import static api.tests.demo.validations.CommonValidations.ok;
 
 public class CocktailRecipesTests extends BaseTest {
     

@@ -60,7 +60,7 @@ public class ConfigContainer {
                 message.append(e.getMessage()).append("\n");
             }
         });
-        if (message.length() != 0) {
+        if (!message.isEmpty()) {
             log.info(message.toString());
             throw new IllegalStateException(message.toString());
         }

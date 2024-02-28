@@ -39,8 +39,7 @@ public class CommonValidations {
     public static Consumer<Response> clientError() {
         return response -> assertTrue(
             response.getStatusCode() >= 400 && response.getStatusCode() < 500,
-            "Expected status code to be 4xx, actual: %s"
-                    .formatted(response.getStatusCode())
+            "Expected status code to be 4xx, actual: %s".formatted(response.getStatusCode())
         );
     }
 

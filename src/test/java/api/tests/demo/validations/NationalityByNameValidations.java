@@ -26,12 +26,13 @@ public class NationalityByNameValidations {
     ) {
         return response -> {
             double countryProbability = response.jsonPath()
-                    .getDouble("country.find {it.country_id == '%s'}.probability"
-                            .formatted(countryId));
-            assertTrue(countryProbability >= expected,
-                    "Unexpected probability for '%s', expected at least '%s', actual: '%s'".formatted(
-                        countryId, expected, countryProbability
-                    ));
+                    .getDouble("country.find {it.country_id == '%s'}.probability".formatted(countryId));
+            assertTrue(
+                countryProbability >= expected,
+                "Unexpected probability for '%s', expected at least '%s', actual: '%s'".formatted(
+                    countryId, expected, countryProbability
+                )
+            );
         };
     }
 }

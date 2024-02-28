@@ -1,29 +1,30 @@
 package api.tests.demo.listeners;
 
-import java.lang.reflect.Method;
-import java.util.Objects;
-import java.util.concurrent.atomic.AtomicInteger;
-
+import api.tests.demo.config.environment.EnvironmentContainer;
+import api.tests.demo.constants.ProjectConstants;
+import api.tests.demo.utils.AllureHelper;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.annotations.Test;
 
-import api.tests.demo.config.environment.EnvironmentContainer;
-import api.tests.demo.constants.ProjectConstants;
-import api.tests.demo.utils.AllureHelper;
-import lombok.extern.slf4j.Slf4j;
+import java.lang.reflect.Method;
+import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
 public class TestListener implements ITestListener {
 
+    private static final String TEST_LOG_ATTACHMENT = "Test Log";
+    private static final String DISCRIMINATOR = "threadName";
     private static final AtomicInteger testCounter = new AtomicInteger(1);
 
     @Override
     public void onTestStart(ITestResult result) {
         Thread.currentThread().setName("Test-%s".formatted(testCounter.getAndIncrement()));
-        MDC.put(ProjectConstants.LOG_FILES_DISCRIMINATOR, Thread.currentThread().getName());
+        MDC.put(DISCRIMINATOR, Thread.currentThread().getName());
         log.info("========== Test Started: \"{}\" ==========", getTestDescription(result));
     }
 
@@ -31,24 +32,24 @@ public class TestListener implements ITestListener {
     public void onTestSuccess(ITestResult result) {
         log.info("========== Test Passed: \"{}\" ==========", getTestDescription(result));
         AllureHelper.attach(
-            ProjectConstants.LOG_ATTACHMENT_NAME,
-            "text/log",
-            testLogFilePath(),
-            "log"
+                TEST_LOG_ATTACHMENT,
+                "text/log",
+                testLogFilePath(),
+                "log"
         );
-        MDC.remove(ProjectConstants.LOG_FILES_DISCRIMINATOR);
+        MDC.remove(DISCRIMINATOR);
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
         log.info("========== Test Skipped: \"{}\" ==========", getTestDescription(result));
         AllureHelper.attach(
-            ProjectConstants.LOG_ATTACHMENT_NAME,
-            "text/log",
-            testLogFilePath(),
-            "log"
+                TEST_LOG_ATTACHMENT,
+                "text/log",
+                testLogFilePath(),
+                "log"
         );
-        MDC.remove(ProjectConstants.LOG_FILES_DISCRIMINATOR);
+        MDC.remove(DISCRIMINATOR);
     }
 
     @Override
@@ -56,12 +57,12 @@ public class TestListener implements ITestListener {
         log.info("========== Test Failed: \"{}\" ==========", getTestDescription(result));
         log.info("Failure reason: {}", result.getThrowable().toString());
         AllureHelper.attach(
-            ProjectConstants.LOG_ATTACHMENT_NAME,
-            "text/log",
-            testLogFilePath(),
-            "log"
+                TEST_LOG_ATTACHMENT,
+                "text/log",
+                testLogFilePath(),
+                "log"
         );
-        MDC.remove(ProjectConstants.LOG_FILES_DISCRIMINATOR);
+        MDC.remove(DISCRIMINATOR);
     }
 
     @Override

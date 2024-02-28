@@ -1,8 +1,6 @@
 package api.tests.demo.listeners;
 
 
-import java.util.Objects;
-
 import io.restassured.filter.Filter;
 import io.restassured.filter.FilterContext;
 import io.restassured.http.Cookies;
@@ -12,6 +10,8 @@ import io.restassured.response.Response;
 import io.restassured.specification.FilterableRequestSpecification;
 import io.restassured.specification.FilterableResponseSpecification;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.Objects;
 
 @Slf4j
 public class RequestListener implements Filter {

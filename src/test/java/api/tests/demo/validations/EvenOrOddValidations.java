@@ -16,10 +16,7 @@ public class EvenOrOddValidations {
             String errorMessage = response.jsonPath().getString("error");
             assertTrue(
                 StringUtils.containsIgnoreCase(errorMessage, subStr),
-                "'error' must contain '%s', actual: '%s'".formatted(
-                    subStr,
-                    errorMessage
-                )
+                "'error' must contain '%s', actual: '%s'".formatted(subStr, errorMessage)
             );
         };
     }

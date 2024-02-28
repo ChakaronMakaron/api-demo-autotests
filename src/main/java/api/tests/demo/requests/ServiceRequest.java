@@ -1,11 +1,5 @@
 package api.tests.demo.requests;
 
-import static org.apache.http.HttpHeaders.AUTHORIZATION;
-
-import java.util.Map;
-
-import org.apache.commons.lang3.StringUtils;
-
 import api.tests.demo.listeners.RequestListener;
 import api.tests.demo.requests.authorization.Authorization;
 import io.qameta.allure.Step;
@@ -17,6 +11,11 @@ import io.restassured.config.SSLConfig;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.Map;
+
+import static org.apache.http.HttpHeaders.AUTHORIZATION;
 
 public class ServiceRequest {
 
