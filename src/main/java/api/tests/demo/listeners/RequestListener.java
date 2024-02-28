@@ -29,22 +29,8 @@ public class RequestListener implements Filter {
     public Response filter(
             FilterableRequestSpecification requestSpec,
             FilterableResponseSpecification responseSpec,
-            FilterContext ctx) {
-
-        // log.info("----- HTTP Request -----");
-        // log.info("{} {}\n", requestSpec.getMethod(), requestSpec.getURI());
-        // log.info("Headers:\n{}\n", requestSpec.getHeaders());
-        // log.info("Cookies:\n{}\n", requestSpec.getCookies().size() == 0 ? EMPTY : requestSpec.getCookies());
-        // log.info("Body:\n{}\n", prettifier.prettify(ObjectsHelper.isNotNullAndNotBlank(requestSpec.getBody()) ? requestSpec.getBody() : EMPTY, Parser.JSON));
-
-        // Response response = ctx.next(requestSpec, responseSpec);
-
-        // log.info("----- HTTP Response -----");
-        // log.info("Status: {}\n", response.getStatusLine());
-        // log.info("Headers:\n{}\n", response.getHeaders());
-        // log.info("Cookies:\n{}\n", response.getCookies().size() == 0 ? EMPTY : response.getCookies());
-        // log.info("Response Body:\n{}", response.getBody().asByteArray().length != 0 ? response.getBody().asPrettyString() : EMPTY);
-
+            FilterContext ctx
+    ) {
         log.info("----- HTTP Request -----");
         log.info("{} {}", requestSpec.getMethod(), requestSpec.getURI());
         log.info("Headers:\n{}", requestSpec.getHeaders());
