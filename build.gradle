@@ -1,0 +1,86 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+group = 'api.tests.demo'
+version = '1.0'
+
+def aspectjVersion = '1.9.19'
+def testNgVersion = '6.14.3'
+def allureVersion = '2.22.0'
+def logbackVersion = '1.4.7'
+def slf4jVersion = '2.0.4'
+def restAssuredVersion = '5.3.0'
+def commonsIoVersion = '2.11.0'
+def commonsLangVersion = '3.12.0'
+def jacksonVersion = '2.14.2'
+def lombokVersion = '1.18.28'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+    agent {
+        canBeResolved = true
+        canBeConsumed = true
+    }
+}
+
+dependencies {
+    agent "org.aspectj:aspectjweaver:${aspectjVersion}"
+
+    implementation "org.testng:testng:${testNgVersion}"
+    implementation "io.qameta.allure:allure-testng:${allureVersion}"
+
+    implementation "ch.qos.logback:logback-classic:${logbackVersion}"
+    implementation "org.slf4j:slf4j-api:${slf4jVersion}"
+
+    implementation "io.rest-assured:rest-assured:${restAssuredVersion}"
+    implementation "io.rest-assured:json-schema-validator:${restAssuredVersion}"
+
+    implementation "commons-io:commons-io:${commonsIoVersion}"
+    implementation "org.apache.commons:commons-lang3:${commonsLangVersion}"
+
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jacksonVersion}"
+
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
+    testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+test {
+    jvmArgs = [ "-javaagent:${configurations.agent.singleFile}" ]
+    def included = includedGroups()
+    environment('INCLUDED', included)
+    useTestNG {
+        parallel 'classes'
+        includeGroups included
+        threadCount 2
+        useDefaultListeners false
+    }
+    testLogging {
+        showStandardStreams = true
+    }
+    ignoreFailures = true
+    reports.html.required = false
+}
+
+def includedGroups() {
+    def included = System.getProperty('INCLUDED') ?: System.getenv('INCLUDED')
+    return included ?: 'ALL'
+}

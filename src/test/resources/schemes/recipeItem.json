@@ -1,0 +1,212 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "idDrink": {
+        "type": "string"
+      },
+      "strDrink": {
+        "type": "string"
+      },
+      "strDrinkAlternate": {
+        "type": "null"
+      },
+      "strTags": {
+        "type": "string"
+      },
+      "strVideo": {
+        "type": "null"
+      },
+      "strCategory": {
+        "type": "string"
+      },
+      "strIBA": {
+        "type": "string"
+      },
+      "strAlcoholic": {
+        "type": "string"
+      },
+      "strGlass": {
+        "type": "string"
+      },
+      "strInstructions": {
+        "type": "string"
+      },
+      "strInstructionsES": {
+        "type": "null"
+      },
+      "strInstructionsDE": {
+        "type": "string"
+      },
+      "strInstructionsFR": {
+        "type": "null"
+      },
+      "strInstructionsIT": {
+        "type": "string"
+      },
+      "strInstructionsZH-HANS": {
+        "type": "null"
+      },
+      "strInstructionsZH-HANT": {
+        "type": "null"
+      },
+      "strDrinkThumb": {
+        "type": "string"
+      },
+      "strIngredient1": {
+        "type": "string"
+      },
+      "strIngredient2": {
+        "type": "string"
+      },
+      "strIngredient3": {
+        "type": "string"
+      },
+      "strIngredient4": {
+        "type": "string"
+      },
+      "strIngredient5": {
+        "type": "null"
+      },
+      "strIngredient6": {
+        "type": "null"
+      },
+      "strIngredient7": {
+        "type": "null"
+      },
+      "strIngredient8": {
+        "type": "null"
+      },
+      "strIngredient9": {
+        "type": "null"
+      },
+      "strIngredient10": {
+        "type": "null"
+      },
+      "strIngredient11": {
+        "type": "null"
+      },
+      "strIngredient12": {
+        "type": "null"
+      },
+      "strIngredient13": {
+        "type": "null"
+      },
+      "strIngredient14": {
+        "type": "null"
+      },
+      "strIngredient15": {
+        "type": "null"
+      },
+      "strMeasure1": {
+        "type": "string"
+      },
+      "strMeasure2": {
+        "type": "string"
+      },
+      "strMeasure3": {
+        "type": "string"
+      },
+      "strMeasure4": {
+        "type": "null"
+      },
+      "strMeasure5": {
+        "type": "null"
+      },
+      "strMeasure6": {
+        "type": "null"
+      },
+      "strMeasure7": {
+        "type": "null"
+      },
+      "strMeasure8": {
+        "type": "null"
+      },
+      "strMeasure9": {
+        "type": "null"
+      },
+      "strMeasure10": {
+        "type": "null"
+      },
+      "strMeasure11": {
+        "type": "null"
+      },
+      "strMeasure12": {
+        "type": "null"
+      },
+      "strMeasure13": {
+        "type": "null"
+      },
+      "strMeasure14": {
+        "type": "null"
+      },
+      "strMeasure15": {
+        "type": "null"
+      },
+      "strImageSource": {
+        "type": "string"
+      },
+      "strImageAttribution": {
+        "type": "string"
+      },
+      "strCreativeCommonsConfirmed": {
+        "type": "string"
+      },
+      "dateModified": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "idDrink",
+      "strDrink",
+      "strDrinkAlternate",
+      "strTags",
+      "strVideo",
+      "strCategory",
+      "strIBA",
+      "strAlcoholic",
+      "strGlass",
+      "strInstructions",
+      "strInstructionsES",
+      "strInstructionsDE",
+      "strInstructionsFR",
+      "strInstructionsIT",
+      "strInstructionsZH-HANS",
+      "strInstructionsZH-HANT",
+      "strDrinkThumb",
+      "strIngredient1",
+      "strIngredient2",
+      "strIngredient3",
+      "strIngredient4",
+      "strIngredient5",
+      "strIngredient6",
+      "strIngredient7",
+      "strIngredient8",
+      "strIngredient9",
+      "strIngredient10",
+      "strIngredient11",
+      "strIngredient12",
+      "strIngredient13",
+      "strIngredient14",
+      "strIngredient15",
+      "strMeasure1",
+      "strMeasure2",
+      "strMeasure3",
+      "strMeasure4",
+      "strMeasure5",
+      "strMeasure6",
+      "strMeasure7",
+      "strMeasure8",
+      "strMeasure9",
+      "strMeasure10",
+      "strMeasure11",
+      "strMeasure12",
+      "strMeasure13",
+      "strMeasure14",
+      "strMeasure15",
+      "strImageSource",
+      "strImageAttribution",
+      "strCreativeCommonsConfirmed",
+      "dateModified"
+    ]
+  }

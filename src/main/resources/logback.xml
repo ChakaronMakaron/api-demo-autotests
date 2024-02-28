@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+
+<configuration>
+    <import class="ch.qos.logback.classic.encoder.PatternLayoutEncoder" />
+    <import class="ch.qos.logback.core.FileAppender" />
+    <import class="ch.qos.logback.core.ConsoleAppender" />
+    <import class="ch.qos.logback.classic.sift.SiftingAppender" />
+
+    <property name="logsDir" value="${user.dir}/build/logs/" />
+    <property name="logFormat" value="%d{HH:mm:ss.SSS} %level [%thread] %logger{16}: %msg%n" />
+
+    <appender name="PER-THREAD" class="SiftingAppender">
+        <discriminator>
+            <key>threadName</key>
+            <defaultValue>test-default</defaultValue>
+        </discriminator>
+        <sift>
+            <appender name="FILE-${threadName}" class="FileAppender">
+                <file>${logsDir}/${threadName}.log</file>
+                <append>false</append>
+                <encoder class="PatternLayoutEncoder">
+                    <charset>UTF-8</charset>
+                    <pattern>${logFormat}</pattern>
+                </encoder>
+            </appender>
+        </sift>
+    </appender>
+
+    <appender name="PER-STEP" class="SiftingAppender">
+        <discriminator>
+            <key>stepName</key>
+            <defaultValue>step-default</defaultValue>
+        </discriminator>
+        <sift>
+            <appender name="FILE-${stepName}" class="FileAppender">
+                <file>${logsDir}/${stepName}.log</file>
+                <append>false</append>
+                <encoder class="PatternLayoutEncoder">
+                    <charset>UTF-8</charset>
+                    <pattern>${logFormat}</pattern>
+                </encoder>
+            </appender>
+        </sift>
+    </appender>
+
+    <appender name="STDOUT" class="ConsoleAppender">
+        <encoder class="PatternLayoutEncoder">
+            <pattern>${logFormat}</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="PER-THREAD" />
+        <appender-ref ref="PER-STEP" />
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
