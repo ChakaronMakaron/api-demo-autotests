@@ -19,7 +19,8 @@ import static api.tests.demo.validations.CommonValidations.ok;
 
 public class CocktailRecipesTests extends BaseTest {
     
-    @Test(groups = { Groups.ALL, Groups.POSITIVE })
+    @Test(groups = { Groups.ALL, Groups.POSITIVE },
+            description = "Get recipe for margarita")
     public void getRecipesByCocktailNameTest() {
         String cocktailName = "margarita";
 
